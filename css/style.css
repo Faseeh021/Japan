@@ -1,0 +1,1686 @@
+/* =========================================================
+   RESET / NORMALIZE
+   ========================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Hero images must NOT be constrained by global reset */
+.hero-photo-girl,
+.hero-campaign-starburst-img,
+.hero-review-badge,
+.hero-google-cloud-img,
+.hero-stat-img {
+  max-width: none;
+  height: auto;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* =========================================================
+   CSS VARIABLES
+   ========================================================= */
+:root {
+  /* Colors */
+  --color-primary: #0068b7;
+  --color-primary-dark: #004c86;
+  --color-secondary: #ff6b00;
+  --color-accent: #e8391c;
+  --color-text: #222222;
+  --color-text-muted: #666666;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f5f8fa;
+  --color-border: #dddddd;
+  --color-white: #ffffff;
+
+  /* Typography */
+  --font-family-base: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-size-base: 16px;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  --line-height-base: 1.6;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+
+  /* Layout */
+  --container-max-width: 1200px;
+  --container-padding: 1rem;
+  --sticky-cta-height: 64px;
+
+  /* Effects */
+  --border-radius: 8px;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --transition-base: 0.2s ease-in-out;
+
+  /* Hero (KANTO水道サービス brand accents) */
+  --hero-bg: #050505;
+  --hero-card-bg: #ffffff;
+  --hero-blue: #0068b7;
+  --hero-blue-dark: #004aad;
+  --hero-blue-pale: #d6ecfb;
+  --hero-yellow: #ffd400;
+  --hero-yellow-dark: #f5a800;
+  --hero-red: #e8391c;
+}
+
+
+/* =========================================================
+   BASE
+   ========================================================= */
+/* =========================================================
+   BASE & FULL-WIDTH SCREEN LAYOUT
+   ========================================================= */
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Standard inner container utility */
+.container {
+  width: 100%;
+  max-width: 1350px;
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.section {
+  width: 100%;
+  padding-block: var(--space-2xl);
+}
+
+.section:nth-of-type(even) {
+  background-color: var(--color-bg-alt);
+}
+
+
+/* =========================================================
+   HERO SECTION (MASSIVE FULL WEBSITE VIEW)
+   ========================================================= */
+.hero-section {
+  position: relative;
+  width: 100%;
+  background-color: #d8f1ff;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.hero-card {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-height: 700px;
+  margin-inline: auto;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+/* Water background texture behind card content */
+.hero-bg-water {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.75;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ===========================================================
+   HERO LAYOUT — matched to client Canva design at 1440px
+   =========================================================== */
+
+/* Symptom icon row across top (Kitchen, Toilet, Washbasin, Bath) */
+.hero-symptom-icons {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 24px 32px 14px 32px;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.hero-symptom-icon {
+  flex: 1 1 auto;
+  width: calc(25% - 16px);
+  max-width: 300px;
+  height: auto;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.18));
+}
+
+/* Main hero body container */
+.hero-body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  min-height: 640px;
+  width: 100%;
+  margin-inline: auto;
+  padding: 20px 32px 40px 32px;
+}
+
+/* Left Column: Copy & Badges */
+.hero-left {
+  position: relative;
+  z-index: 3;
+  flex: 0 0 58%;
+  max-width: 58%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 60px;
+}
+
+/* Tagline pill */
+.hero-tag {
+  display: inline-block;
+  background: linear-gradient(180deg, #6ee0ff 0%, #20a6f4 100%);
+  color: #ffffff;
+  font-weight: 900;
+  font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+  padding: 0.38em 1.3em;
+  border-radius: 999px;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 100, 190, 0.32);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+/* Headline */
+.hero-headline {
+  margin-bottom: 10px;
+  font-weight: 900;
+  line-height: 1.08;
+}
+
+.hero-headline-line1 {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.hero-mizu {
+  font-size: clamp(4rem, 8.5vw, 9.5rem);
+  font-weight: 900;
+  background: linear-gradient(180deg, #3adbff 0%, #0066cb 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 3px 6px rgba(0, 70, 150, 0.35));
+  -webkit-text-stroke: 4px #ffffff;
+  line-height: 0.9;
+}
+
+.hero-mawari {
+  font-size: clamp(2rem, 3.8vw, 4.2rem);
+  font-weight: 900;
+  color: #0072ce;
+  text-shadow: -2.5px -2.5px 0 #fff, 2.5px -2.5px 0 #fff, -2.5px 2.5px 0 #fff, 2.5px 2.5px 0 #fff;
+}
+
+.hero-headline-line2 {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-top: -6px;
+}
+
+.hero-toraburu {
+  font-size: clamp(2.2rem, 4vw, 4.5rem);
+  font-weight: 900;
+  color: #0072ce;
+  text-shadow: -2.5px -2.5px 0 #fff, 2.5px -2.5px 0 #fff, -2.5px 2.5px 0 #fff, 2.5px 2.5px 0 #fff;
+}
+
+.hero-sokujitsu {
+  font-size: clamp(2.6rem, 5vw, 5.5rem);
+  font-weight: 900;
+  color: #ffe600;
+  text-shadow: -3px -3px 0 #004aa8, 3px -3px 0 #004aa8, -3px 3px 0 #004aa8, 3px 3px 0 #004aa8, 0 5px 10px rgba(0,0,0,0.3);
+  letter-spacing: -0.02em;
+}
+
+/* Google 100件 突破 Cloud Image Badge */
+.hero-google-cloud-wrap {
+  margin-top: 14px;
+  margin-bottom: 16px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero-google-cloud-img {
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  display: block;
+  filter: drop-shadow(0 8px 20px rgba(230, 190, 0, 0.45));
+}
+
+/* Stat Bubbles Images Row (15.png and 5.png) */
+.hero-stat-bubbles-row {
+  position: relative;
+  margin-top: 14px;
+  width: 100%;
+  height: clamp(260px, 30vw, 460px); /* matches tallest bubble height */
+}
+
+.hero-stat-img {
+  max-width: none !important;
+  height: auto !important;
+  display: block;
+  position: absolute;
+  filter: drop-shadow(0 8px 18px rgba(0, 90, 170, 0.28));
+}
+
+/* ── Adjust left / bottom to reposition each bubble ── */
+.hero-stat-15 {
+  width: clamp(260px, 28vw, 430px) !important;
+  left: 0px;   /* ← move right/left */
+  bottom: 0px; /* ← move up/down   */
+}
+
+.hero-stat-5 {
+  width: clamp(280px, 30vw, 460px) !important;
+  left: clamp(180px, 20vw, 310px); /* ← move right/left (starts after 15 bubble) */
+  bottom: 0px;                     /* ← move up/down   */
+}
+
+/* ─── Right Side: Staff Girl & Floating Badges ─── */
+.hero-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 62%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+}
+
+/* Girl fills entire hero card height — overflow upward for large scale */
+.hero-photo-girl {
+  display: block !important;
+  position: absolute;
+  right: -20px;
+  bottom: 0;
+  top: -8%;
+  width: auto !important;
+  max-width: none !important;
+  height: 115% !important;
+  max-height: none !important;
+  object-fit: contain;
+  object-position: right bottom;
+  z-index: 2;
+  mix-blend-mode: normal;
+  filter: drop-shadow(-8px 10px 22px rgba(0, 0, 0, 0.22));
+}
+
+/* Web割 50% OFF Starburst Badge */
+.hero-campaign-starburst-img {
+  display: block !important;
+  position: absolute;
+ top: 42%;
+    right: 48px;
+  width: clamp(120px, 15vw, 220px) !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 3;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.3));
+}
+
+/* Google 4.8 Review Star Badge */
+.hero-review-badge {
+  display: block !important;
+  position: absolute;
+  bottom: 6%;
+  right: 28%;
+  width: clamp(180px, 22vw, 320px) !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 3;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.28));
+}
+
+/* ─── Responsive: 1024px and below — scaled desktop hero (vw of 1440 design) ─── */
+@media (max-width: 1024px) {
+  .hero-card {
+    min-height: 48.6vw;   /* 700px ÷ 1440 design width */
+  }
+
+  .hero-symptom-icons {
+    gap: 1.39vw;                            /* 20px */
+    padding: 1.67vw 2.22vw 0.97vw 2.22vw;  /* 24/32/14/32px */
+  }
+
+  .hero-body {
+    min-height: 44.4vw;                     /* 640px */
+    padding: 1.39vw 2.22vw 2.78vw 2.22vw;  /* 20/32/40/32px */
+  }
+
+  .hero-left {
+    padding-top: 4.17vw;   /* 60px */
+  }
+
+  /* Headline / copy as pure vw so the whole hero scales as one unit.
+     (The desktop clamp() rules have px minimums that stop shrinking below
+     ~520px, which is what made the phone view overlap.) */
+  .hero-tag {
+    font-size: 1.85vw;                      /* ~27px @1440 */
+  }
+  .hero-mizu {
+    font-size: 8.5vw;                       /* ~122px @1440 */
+    -webkit-text-stroke: 0.28vw #ffffff;    /* 4px */
+  }
+  .hero-mawari {
+    font-size: 3.8vw;
+  }
+  .hero-toraburu {
+    font-size: 4vw;
+  }
+  .hero-sokujitsu {
+    font-size: 5vw;
+  }
+
+  /* Stat bubbles + badges scale with the layout too */
+  .hero-stat-bubbles-row {
+    height: 30vw;                           /* 432px @1440 */
+  }
+  .hero-stat-15 {
+    width: 28vw !important;                 /* 403px @1440 */
+  }
+  .hero-stat-5 {
+    width: 30vw !important;                 /* 432px @1440 */
+    left: 20vw;                             /* 288px @1440 */
+  }
+
+  .hero-photo-girl {
+    right: -1.39vw;   /* -20px */
+  }
+
+  .hero-campaign-starburst-img {
+    width: 15vw !important;                 /* 216px @1440 */
+    right: 3.33vw;   /* 48px */
+  }
+  .hero-review-badge {
+    width: 22vw !important;                 /* 317px @1440 */
+  }
+}
+
+/* =========================================================
+   SECOND SECTION: CAMPAIGN BANNER
+   ========================================================= */
+/* =========================================================
+   SECOND SECTION: CAMPAIGN BANNER (100VW FULL VIEWPORT WIDTH)
+   ========================================================= */
+.campaign-section {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.campaign-banner-card {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: none;
+  background-color: #ffffff;
+}
+
+.campaign-banner-video,
+.campaign-banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  object-fit: cover;
+}
+
+/* =========================================================
+   THIRD SECTION: TROUBLE SYMPTOMS (3RDSECTION.PNG)
+   ========================================================= */
+.trouble-symptoms-section {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #5e5f61;
+  overflow: hidden;
+}
+
+.trouble-symptoms-card {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #5e5f61;
+}
+
+.trouble-symptoms-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: none;
+  outline: none;
+}
+
+/* =========================================================
+   5TH SECTION: PRICE GUARANTEE & TRANSPARENCY
+   ========================================================= */
+.price-guarantee-section {
+  width: 100%;
+  padding: 60px 30px;
+  background-color: #dcf2ff;
+}
+
+.price-guarantee-card {
+  max-width: 1280px;
+  margin-inline: auto;
+  background-color: #ffffff;
+  border-radius: 36px;
+  padding: 54px 44px 64px 44px;
+  box-shadow: 0 10px 36px rgba(0, 80, 160, 0.1);
+  text-align: center;
+}
+
+/* Headline */
+.price-guarantee-headline {
+  margin-bottom: 28px;
+  color: #040960;
+  font-weight: 900;
+}
+
+.price-headline-line1 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.price-headline-line2 {
+  font-size: 3.2rem;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+}
+
+/* Ribbon Banner */
+.price-guarantee-ribbon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #32d6ec 0%, #1e85e5 55%, #0036a6 100%);
+  padding: 16px 40px;
+  margin-bottom: 36px;
+  box-shadow: 0 5px 14px rgba(0, 60, 150, 0.25);
+  border-radius: 8px;
+}
+
+.price-ribbon-text {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin-right: 12px;
+}
+
+.price-ribbon-free {
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: #ff3b30;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+}
+
+/* 3 Overlapping Cost Circles */
+.price-guarantee-circles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.price-circle {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #006ce6 0%, #004cb8 55%, #003796 100%);
+  border: 5px solid #20c997;
+  box-shadow: 0 8px 24px rgba(0, 60, 150, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+}
+
+.circle-left {
+  z-index: 1;
+}
+
+.circle-center {
+  z-index: 2;
+  margin-left: -28px;
+  margin-right: -28px;
+}
+
+.circle-right {
+  z-index: 1;
+}
+
+/* Circle 1: 基本料金 3,300円〜 */
+.circle-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.circle-price-wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  line-height: 1;
+}
+
+.circle-num {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #ffe600;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  letter-spacing: -0.02em;
+}
+
+.circle-unit {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin-top: -2px;
+  margin-left: 2px;
+}
+
+/* Circle 2 & 3: 作業料金 / 材料費 */
+.circle-main-text {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+/* Responsive Overrides for Mobile */
+@media (max-width: 480px) {
+  .price-guarantee-card {
+    padding: 20px 10px 24px 10px;
+    border-radius: 20px;
+  }
+
+  .price-headline-line1 {
+    font-size: 1.1rem;
+  }
+
+  .price-headline-line2 {
+    font-size: 1.45rem;
+  }
+
+  .price-ribbon-text {
+    font-size: 1.15rem;
+  }
+
+  .price-ribbon-free {
+    font-size: 1.45rem;
+  }
+
+  .price-circle {
+    width: 105px;
+    height: 105px;
+    border-width: 3px;
+  }
+
+  .circle-center {
+    margin-left: -12px;
+    margin-right: -12px;
+  }
+
+  .circle-title {
+    font-size: 0.9rem;
+  }
+
+  .circle-num {
+    font-size: 1.55rem;
+  }
+
+  .circle-unit {
+    font-size: 0.85rem;
+  }
+
+  .circle-main-text {
+    font-size: 1.2rem;
+  }
+}
+
+.symptoms-checklist {}
+
+.pricing-table {}
+
+/* =========================================================
+   REASONS WHY US SECTION (選ばれる4つの理由 - FULL-BLEED CANVA LP VIEW)
+   ========================================================= */
+.reasons-section {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #f5f7fa;
+  overflow: hidden;
+}
+
+.reasons-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Header */
+.reasons-header {
+  padding: 56px 20px 48px 20px;
+  background-color: #f5f7fa;
+  margin: 0;
+}
+
+.reasons-sub-title {
+  font-size: 3.8rem;
+  font-weight: 900;
+  color: #0050c8;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.reasons-main-title {
+  font-size: 5.8rem;
+  font-weight: 900;
+  color: #111111;
+  letter-spacing: 0.06em;
+  margin: 8px 0 0 0;
+  line-height: 1.15;
+}
+
+/* 4 Point Cards Stack (100% Full Bleed Edge-to-Edge) */
+.reasons-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.reason-card {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: #ffffff;
+}
+
+/* =========================================================
+   SERVICES SECTION (作業料金一覧 - WATER RIPPLE BACKGROUND & 2-COL GRID)
+   ========================================================= */
+.services-section {
+  width: 100%;
+  padding: 280px 0 240px 0;
+  margin: 0;
+  background-image: url('../assets/images/services-background.png');
+  background-size: 100% 100%;
+  background-position: top center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  position: relative;
+}
+
+.services-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Banner Ribbon CTA */
+.services-banner-ribbon {
+  width: 100%;
+  padding: 22px 20px;
+  background: linear-gradient(90deg, #00c8ff 0%, #0044cc 50%, #002b88 100%);
+  margin-bottom: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  box-shadow: 0 8px 24px rgba(0, 40, 120, 0.2);
+}
+
+.services-ribbon-text {
+  color: #ff3333;
+  font-size: 3.4rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.services-ribbon-price {
+  color: #ffb800;
+  font-size: 5.8rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.35);
+}
+
+.services-ribbon-symbol {
+  color: #ff3333;
+  font-size: 4.5rem;
+  font-weight: 900;
+}
+
+/* 6 Service Cards 2-Column Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px 44px;
+  max-width: 1350px;
+  margin: 0 auto;
+  padding-inline: 40px;
+}
+
+.service-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.service-card-img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1.05;
+  object-fit: fill;
+  display: block;
+  border-radius: 20px;
+  filter: drop-shadow(0 10px 24px rgba(0, 50, 140, 0.18));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.service-card:hover .service-card-img {
+  transform: translateY(-4px);
+  filter: drop-shadow(0 16px 32px rgba(0, 50, 140, 0.28));
+}
+
+/* =========================================================
+   PROCESS FLOW SECTION (作業までの流れ - CANVA FULL-SCREEN SCALE)
+   ========================================================= */
+.process-section {
+  width: 100%;
+  padding: 90px 0 110px 0;
+  margin: 0;
+  background-color: #dbeeb8;
+  overflow: hidden;
+}
+
+.process-container {
+  width: 100%;
+  max-width: 1380px;
+  margin-inline: auto;
+  padding-inline: 40px;
+  text-align: center;
+}
+
+/* Hanging Signboard Header Title Image */
+.process-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 70px;
+}
+
+.process-heading-img {
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.08));
+}
+
+/* 4 Process Step Items List */
+.process-list {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  width: 100%;
+}
+
+.process-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+  text-align: left;
+  width: 100%;
+}
+
+.process-badge {
+  width: 400px;
+  height: 400px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+}
+
+.process-badge-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.06));
+}
+
+.process-content {
+  flex: 1;
+  padding-top: 24px;
+}
+
+.process-step-title {
+  font-size: 4.8rem;
+  font-weight: 900;
+  color: #111111;
+  margin: 0 0 24px 0;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.process-step-desc {
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: #111111;
+  line-height: 1.65;
+  margin: 0;
+  word-break: break-all;
+}
+
+/* ─── Process flow — MOBILE optimization (desktop layout untouched) ─── */
+@media (max-width: 768px) {
+  .process-section {
+    padding: 48px 0 56px 0;
+  }
+
+  .process-container {
+    padding-inline: 20px;
+  }
+
+  .process-header {
+    margin-bottom: 36px;
+  }
+
+  .process-heading-img {
+    max-width: 300px;
+  }
+
+  .process-list {
+    gap: 40px;
+  }
+
+  /* Stack each step vertically: badge on top, text centered below */
+  .process-item {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+  }
+
+  .process-badge {
+    width: 160px;
+    height: 160px;
+  }
+
+  .process-content {
+    padding-top: 0;
+    width: 100%;
+  }
+
+  .process-step-title {
+    font-size: 1.6rem;
+    margin: 0 0 8px 0;
+    letter-spacing: 0.02em;
+  }
+
+  .process-step-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    word-break: normal;   /* stop mid-word char stacking on narrow screens */
+  }
+}
+
+/* =========================================================
+   WARNING SECTION (悪徳業者撲滅！失敗しない業者選び - HAZARD STRIPES)
+   ========================================================= */
+.warning-section {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  /* Yellow and Black Construction Hazard Stripe background pattern (narrower 22px stripes) */
+  background: repeating-linear-gradient(-45deg, #000000 0, #000000 22px, #ffcc00 22px, #ffcc00 44px);
+  overflow: hidden;
+}
+
+.warning-container {
+  background-color: #ffcc00;
+  max-width: 1380px;
+  margin-inline: auto;
+  padding: 64px 48px 80px 48px;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
+}
+
+/* Title Block */
+.warning-title-block {
+  margin-bottom: 32px;
+}
+
+.warning-main-title {
+  font-size: 5.4rem;
+  font-weight: 900;
+  color: #000000;
+  letter-spacing: 0.05em;
+  margin: 0 0 10px 0;
+  line-height: 1.15;
+}
+
+.warning-divider {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #000000;
+  letter-spacing: -2px;
+  margin-block: 6px;
+  opacity: 0.8;
+}
+
+.warning-sub-title {
+  font-size: 4.4rem;
+  font-weight: 900;
+  color: #000000;
+  letter-spacing: 0.04em;
+}
+
+.warning-red {
+  color: #ff2200;
+  font-weight: 900;
+}
+
+.warning-red-highlight {
+  color: #ff2200;
+  font-weight: 900;
+  font-size: 1.2em;
+  border-bottom: 3px solid #ff2200;
+}
+
+/* Intro Text */
+.warning-intro-text {
+  font-size: 2.7rem;
+  font-weight: 900;
+  color: #111111;
+  line-height: 1.75;
+  max-width: 1250px;
+  margin: 36px auto 48px auto;
+  text-align: justify;
+  word-break: break-all;
+}
+
+/* 3 Warning Alert Cards */
+.warning-cards-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 1150px;
+  margin-inline: auto;
+}
+
+.warning-card {
+  background-color: #0050cd;
+  border-radius: 28px;
+  padding: 36px 44px;
+  text-align: left;
+  box-shadow: 0 10px 28px rgba(0, 40, 140, 0.3);
+}
+
+.warning-card-header {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #ffe600;
+  border-bottom: 3px dashed rgba(255, 255, 255, 0.55);
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  line-height: 1.3;
+}
+
+.warning-card-icon {
+  font-size: 2.6rem;
+}
+
+.warning-card-text {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* =========================================================
+   FAQ SECTION (MASSIVE CANVA FULL-SCREEN SCALE)
+   ========================================================= */
+.faq-section {
+  width: 100%;
+  padding: 80px 40px;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.faq-container {
+  width: 100%;
+  max-width: 1350px;
+  margin-inline: auto;
+}
+
+/* Header */
+.faq-header {
+  margin-bottom: 52px;
+  padding-left: 4px;
+}
+
+.faq-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.faq-bubble-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid #111111;
+  border-radius: 22px;
+  padding: 12px 28px;
+  background-color: #ffffff;
+}
+
+/* Speech bubble pointer bottom-left */
+.faq-bubble-icon::after {
+  content: "";
+  position: absolute;
+  bottom: -16px;
+  left: 22px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 16px 14px 0 0;
+  border-color: #111111 transparent transparent transparent;
+}
+
+.faq-bubble-icon span {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #111111;
+  letter-spacing: -0.02em;
+}
+
+.faq-title-text-wrap {
+  flex: 1;
+}
+
+.faq-title-text {
+  font-size: 3.6rem;
+  font-weight: 900;
+  color: #111111;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.faq-title-line {
+  height: 7px;
+  background-color: #111111;
+  margin-top: 12px;
+  width: 100%;
+}
+
+/* FAQ Cards List */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Single FAQ Card with Stitched / Double Frame Border (Canva Match) */
+.faq-card {
+  background-color: #ffffff;
+  border-radius: 36px;
+  padding: 48px 56px;
+ 
+  position: relative;
+  border: 7px double #222222;
+  outline: 4px dashed #333333;
+  outline-offset: -12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Question Row (Q) */
+.faq-q-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 26px;
+  margin-bottom: 28px;
+}
+
+.faq-q-icon {
+  width: 68px;
+  height: 68px;
+  flex-shrink: 0;
+  border: 4.5px solid #0000d6;
+  border-radius: 18px;
+  background-color: #ffffff;
+  color: #0000d6;
+  font-size: 2.6rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  box-shadow: 0 4px 12px rgba(0, 0, 214, 0.18);
+}
+
+.faq-q-text {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #0000d6;
+  line-height: 1.4;
+  padding-top: 8px;
+ 
+}
+
+/* Answer Row (A) */
+.faq-a-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 26px;
+}
+
+.faq-a-icon {
+  width: 68px;
+  height: 68px;
+  flex-shrink: 0;
+  border: 4.5px solid #ff3333;
+  border-radius: 18px;
+  background-color: #ffffff;
+  color: #ff3333;
+  font-size: 2.6rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  box-shadow: 0 4px 12px rgba(255, 51, 51, 0.18);
+}
+
+.faq-a-text {
+  font-size: 2.0rem;
+  font-weight: 800;
+  color: #111111;
+  line-height: 1.75;
+  padding-top: 8px;
+    padding-bottom: 40px !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .faq-title-text {
+    font-size: 1.55rem;
+  }
+
+  .faq-q-text {
+    font-size: 1.08rem;
+  }
+
+  .faq-a-text {
+    font-size: 0.95rem;
+  }
+
+  .faq-card {
+    padding: 16px 16px;
+  }
+}
+
+/* =========================================================
+   SERVICE AREA SECTION (100VW FULL VIEWPORT WIDTH & SEAMLESS MAP SPACING)
+   ========================================================= */
+/* =========================================================
+   SERVICE AREA SECTION (SEAMLESS MAP & CITIES)
+   ========================================================= */
+.service-area-section {
+  width: 100%;
+  padding: 40px 0 0 0;
+  margin: 0;
+  background-color: #dcfeff;
+  overflow: hidden;
+}
+
+.service-area-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Top Kanto Map Graphic */
+.service-area-map-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.service-area-map-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Prefecture Area Lists */
+.service-area-lists {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto 60px auto;
+  padding-inline: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.service-area-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Rounded Blue Pill Header (東京都, 千葉県, 埼玉県, 神奈川県) */
+.service-area-pill-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #0056b8 0%, #003ea0 100%);
+  color: #ffffff;
+  font-size: 3.4rem;
+  font-weight: 900;
+  padding: 20px 0;
+  border-radius: 999px;
+  width: 95%;
+  max-width: 840px;
+  box-shadow: 0 6px 18px rgba(0, 60, 160, 0.3);
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+}
+
+.service-area-text {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #111111;
+  line-height: 1.65;
+  text-align: justify;
+  word-break: break-all;
+  max-width: 1150px;
+  width: 100%;
+}
+
+.service-area-tokyo {
+  font-size: 3.2rem;
+  text-align: center;
+  font-weight: 900;
+}
+
+/* Bottom Campaign Banner CTA in Service Area */
+.service-area-cta-wrap {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.service-area-cta-video,
+.service-area-cta-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  object-fit: cover;
+}
+
+/* =========================================================
+   6TH SECTION: TESTIMONIALS (お客様の声 - ZERO-GAP FULL BLEED)
+   ========================================================= */
+.testimonials-section {
+  width: 100%;
+  padding: 36px 0 0 0;
+  margin: 0;
+  background-color: #fffde8;
+}
+
+.testimonials-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Stack of Card Images - Seamless zero-gap connection */
+.testimonials-cards-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.testimonials-card-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  border-radius: 0;
+}
+
+
+/* =========================================================
+   COMPANY FOOTER SECTION (企業情報 - CANVA MASSIVE FULL SCREEN)
+   ========================================================= */
+.company-footer-section {
+  width: 100%;
+  padding: 80px 40px 110px 40px;
+  background-color: #dff5ff;
+  overflow: hidden;
+}
+
+.company-footer-container {
+  width: 100%;
+  max-width: 1350px;
+  margin-inline: auto;
+}
+
+/* Slanted Parallelogram Banner Header Image */
+.company-footer-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.company-footer-header-img {
+  width: 100%;
+  max-width: 960px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.25));
+}
+
+/* Company Information List */
+.company-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.company-info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.company-info-label {
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: #1a0f91;
+  letter-spacing: 0.02em;
+}
+
+.company-info-val {
+  color: #111111;
+  font-weight: 900;
+}
+
+.company-name {
+  font-size: 3.8rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.company-address {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1.45;
+}
+
+.company-tel {
+  font-size: 4.5rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+}
+
+.company-business {
+  font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1.65;
+  color: #111111;
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+  .services-section {
+    padding: 160px 0 140px 0;
+  }
+
+  .services-banner-ribbon {
+    padding: 14px 12px;
+    margin-bottom: 32px;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .services-ribbon-text {
+    font-size: 2.0rem;
+  }
+
+  .services-ribbon-price {
+    font-size: 3.6rem;
+  }
+
+  .services-ribbon-symbol {
+    font-size: 2.8rem;
+  }
+
+  .services-grid {
+    gap: 20px 16px;
+    padding-inline: 16px;
+  }
+
+  .company-footer-header-img {
+    max-width: 100%;
+  }
+
+  .company-info-label {
+    font-size: 1.6rem;
+  }
+
+  .company-name, .company-tel {
+    font-size: 1.9rem;
+  }
+
+  .company-address, .company-business {
+    font-size: 1.4rem;
+  }
+}
+
+
+/* =========================================================
+   STICKY CTA BAR
+   ========================================================= */
+.sticky-cta-bar {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  height: var(--sticky-cta-height);
+  background-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+  z-index: 100;
+}
+
+
+/* =========================================================
+   RESPONSIVE BREAKPOINTS (mobile-first)
+   ========================================================= */
+@media (min-width: 768px) {
+  :root {
+    --container-padding: 2rem;
+  }
+
+  .section {
+    padding-block: var(--space-2xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  /* desktop-specific overrides go here */
+}
