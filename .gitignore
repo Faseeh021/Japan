@@ -4,4 +4,5 @@ Thumbs.db
 
 # Editor / local tooling
 .claude/
-.vscode/
+config.bat
+node_modules
