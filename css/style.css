@@ -327,7 +327,7 @@ body {
 }
 
 .hero-sokujitsu {
-  font-size: clamp(2.6rem, 5vw, 5.5rem);
+  font-size: clamp(4.4rem, 9vw, 9.8rem);
   font-weight: 900;
   color: #ffe600;
   text-shadow: -3px -3px 0 #004aa8, 3px -3px 0 #004aa8, -3px 3px 0 #004aa8, 3px 3px 0 #004aa8, 0 5px 10px rgba(0,0,0,0.3);
@@ -472,7 +472,7 @@ body {
     font-size: 4vw;
   }
   .hero-sokujitsu {
-    font-size: 5vw;
+    font-size: 9vw;
   }
 
   /* Stat bubbles + badges scale with the layout too */
@@ -824,6 +824,112 @@ body {
   border-radius: 0;
   box-shadow: none;
   background-color: #ffffff;
+}
+
+.reason-card-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.reason-card-body {
+  text-align: left;
+  padding: 48px 56px 64px 56px;
+}
+
+.reason-card-label {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0050c8;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+
+.reason-card-title {
+  font-size: 3.6rem;
+  font-weight: 900;
+  color: #0050c8;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  margin: 0 0 20px 0;
+}
+
+.reason-card-desc {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #111111;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ─── Reasons why us — MOBILE optimization (desktop layout untouched) ─── */
+@media (max-width: 768px) {
+  .reasons-header {
+    padding: 40px 20px 32px 20px;
+  }
+
+  .reasons-sub-title {
+    font-size: 1.9rem;
+  }
+
+  .reasons-main-title {
+    font-size: 2.9rem;
+    margin-top: 6px;
+  }
+
+  .reason-card-body {
+    padding: 28px 28px 36px 28px;
+  }
+
+  .reason-card-label {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+
+  .reason-card-title {
+    font-size: 2.1rem;
+    margin-bottom: 14px;
+  }
+
+  .reason-card-desc {
+    font-size: 1.3rem;
+    line-height: 1.75;
+  }
+}
+
+@media (max-width: 480px) {
+  .reasons-header {
+    padding: 32px 16px 24px 16px;
+  }
+
+  .reasons-sub-title {
+    font-size: 1.5rem;
+  }
+
+  .reasons-main-title {
+    font-size: 2.2rem;
+    margin-top: 4px;
+  }
+
+  .reason-card-body {
+    padding: 22px 20px 28px 20px;
+  }
+
+  .reason-card-label {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  .reason-card-title {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+  }
+
+  .reason-card-desc {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
 }
 
 /* =========================================================
@@ -1482,42 +1588,336 @@ body {
 }
 
 /* =========================================================
-   6TH SECTION: TESTIMONIALS (お客様の声 - ZERO-GAP FULL BLEED)
+   6TH SECTION: TESTIMONIALS (お客様の声 - CUSTOM HTML CARDS)
    ========================================================= */
 .testimonials-section {
   width: 100%;
-  padding: 36px 0 0 0;
+  padding: 80px 0 110px 0;
   margin: 0;
   background-color: #fffde8;
 }
 
 .testimonials-container {
   width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
+  max-width: 1500px;
+  margin-inline: auto;
+  padding-inline: 50px;
 }
 
-/* Stack of Card Images - Seamless zero-gap connection */
+/* Section Header — layered offset plaques with dark dot */
+.testimonials-header {
+  position: relative;
+  z-index: 0; /* stacking context so the offset outline sits above the section bg */
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
+.testimonials-title {
+  position: relative;
+  display: inline-block;
+  padding: 28px 100px 28px 140px;
+  background-color: #a9d9e3;
+  color: #111111;
+  font-size: 5.4rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+}
+
+/* Dark teal dot at the left of the plaque */
+.testimonials-title::before {
+  content: "";
+  position: absolute;
+  left: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background-color: #1c5a6b;
+}
+
+/* Dark plaque offset down-right, behind the light blue one */
+.testimonials-title::after {
+  content: "";
+  position: absolute;
+  left: 26px;
+  top: 26px;
+  right: -26px;
+  bottom: -26px;
+  background-color: #1c5a6b;
+  z-index: -1;
+}
+
+/* Thin outline offset up-left */
+.testimonials-header::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 600px;
+  height: 106px;
+  transform: translate(-58%, -20px);
+  border: 2px solid #63b8cc;
+  z-index: -1;
+}
+
+/* Cards Stack */
 .testimonials-cards-wrap {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 56px;
   width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
 }
 
-.testimonials-card-img {
+.testimonial-card {
+  position: relative;
   width: 100%;
-  height: auto;
+  background-color: #ffffff;
+  border: 12px solid #cbe7ee;
+  border-radius: 44px;
+  padding: 140px 60px 80px 60px;
+}
+
+/* Category tag (トイレ / お風呂 / キッチン) */
+.testimonial-tag {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 500px;
+  padding: 20px 60px;
+  background-color: #a9d9e3;
+  color: #ffffff;
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  border-radius: 44px 0 44px 0;
+}
+
+/* Avatar + headline row */
+.testimonial-head {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.testimonial-avatar {
+  width: 300px;
+  height: 300px;
+  flex-shrink: 0;
+  object-fit: contain;
   display: block;
+  /* rounds the opaque backdrop some source avatars ship with */
+  border-radius: 50%;
+}
+
+.testimonial-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.testimonial-headline {
+  font-size: 4.6rem;
+  font-weight: 900;
+  color: #1268c3;
+  line-height: 1.4;
+  margin: 0 0 18px 0;
+}
+
+.testimonial-profile {
+  font-size: 3.4rem;
+  font-weight: 700;
+  color: #1268c3;
   margin: 0;
-  padding: 0;
-  border: none;
-  outline: none;
-  border-radius: 0;
+}
+
+.testimonial-body {
+  font-size: 3.4rem;
+  font-weight: 700;
+  color: #111111;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ─── Testimonials — TABLET / small-desktop step-down ─── */
+@media (max-width: 1200px) {
+  .testimonials-container {
+    padding-inline: 32px;
+  }
+
+  .testimonials-title {
+    padding: 22px 72px 22px 104px;
+    font-size: 4rem;
+  }
+
+  .testimonials-title::before {
+    left: 38px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .testimonials-header::before {
+    width: 460px;
+    height: 82px;
+  }
+
+  .testimonial-card {
+    padding: 108px 44px 60px 44px;
+  }
+
+  .testimonial-tag {
+    min-width: 380px;
+    padding: 16px 46px;
+    font-size: 3.6rem;
+  }
+
+  .testimonial-head {
+    gap: 36px;
+    margin-bottom: 36px;
+  }
+
+  .testimonial-avatar {
+    width: 220px;
+    height: 220px;
+  }
+
+  .testimonial-headline {
+    font-size: 3.4rem;
+  }
+
+  .testimonial-profile {
+    font-size: 2.5rem;
+  }
+
+  .testimonial-body {
+    font-size: 2.5rem;
+  }
+}
+
+/* ─── Testimonials — MOBILE optimization ─── */
+@media (max-width: 768px) {
+  .testimonials-section {
+    padding: 40px 0 48px 0;
+  }
+
+  .testimonials-container {
+    padding-inline: 20px;
+  }
+
+  .testimonials-header {
+    margin-bottom: 40px;
+  }
+
+  .testimonials-title {
+    padding: 14px 40px 14px 64px;
+    font-size: 2.2rem;
+  }
+
+  .testimonials-title::before {
+    left: 24px;
+    width: 26px;
+    height: 26px;
+  }
+
+  .testimonials-title::after {
+    left: 12px;
+    top: 12px;
+    right: -12px;
+    bottom: -12px;
+  }
+
+  .testimonials-cards-wrap {
+    gap: 28px;
+  }
+
+  .testimonial-card {
+    border-width: 6px;
+    border-radius: 22px;
+    padding: 58px 22px 30px 22px;
+  }
+
+  .testimonial-tag {
+    top: -6px;
+    left: -6px;
+    min-width: 180px;
+    padding: 8px 26px;
+    font-size: 1.5rem;
+    border-radius: 20px 0 20px 0;
+  }
+
+  .testimonial-head {
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .testimonial-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .testimonial-headline {
+    font-size: 1.55rem;
+    margin-bottom: 6px;
+  }
+
+  .testimonial-profile {
+    font-size: 1.05rem;
+    white-space: nowrap;
+  }
+
+  .testimonial-body {
+    font-size: 1.25rem;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonials-container {
+    padding-inline: 14px;
+  }
+
+  .testimonials-title {
+    padding: 12px 28px 12px 54px;
+    font-size: 1.8rem;
+  }
+
+  .testimonials-title::before {
+    left: 18px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .testimonial-card {
+    padding: 52px 16px 26px 16px;
+  }
+
+  .testimonial-tag {
+    min-width: 150px;
+    padding: 7px 20px;
+    font-size: 1.35rem;
+  }
+
+  .testimonial-avatar {
+    width: 64px;
+    height: 64px;
+  }
+
+  .testimonial-headline {
+    font-size: 1.35rem;
+  }
+
+  .testimonial-profile {
+    font-size: 0.95rem;
+  }
+
+  .testimonial-body {
+    font-size: 1.15rem;
+  }
 }
 
 
