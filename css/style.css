@@ -181,6 +181,179 @@ body {
 
 
 /* =========================================================
+   STICKY NAVIGATION HEADER (TOP STICKY NAVBAR)
+   ========================================================= */
+.sticky-navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12);
+  z-index: 9999;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.sticky-nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 10px 24px;
+  gap: 20px;
+}
+
+/* --- Left: Logo & Brand --- */
+.sticky-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+  flex-shrink: 0;
+}
+
+.sticky-brand-logo {
+  display: flex;
+  align-items: center;
+}
+
+.kss-logo-svg {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
+.sticky-brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.15;
+}
+
+.sticky-brand-name {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #1e293b;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.sticky-brand-sub {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #005BAC;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+/* --- Right Group: Phone Block & LINE Button --- */
+.sticky-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.sticky-phone-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.sticky-phone-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+}
+
+.sticky-phone-btn:hover {
+  transform: scale(1.02);
+}
+
+.sticky-freedial-icon {
+  width: 36px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.sticky-phone-number {
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: #005BAC;
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.sticky-payment-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 3px 10px;
+}
+
+.sticky-payment-badge .card-logo {
+  display: block;
+  width: auto;
+}
+
+/* --- LINE Button --- */
+.sticky-line-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #06C755 0%, #00B900 100%);
+  color: #ffffff;
+  text-decoration: none;
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(6, 199, 85, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+
+.sticky-line-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 14px rgba(6, 199, 85, 0.45);
+}
+
+.sticky-line-icon-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.sticky-line-svg {
+  width: 28px;
+  height: 28px;
+  margin-bottom: -1px;
+}
+
+.sticky-line-label {
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  font-family: Arial, sans-serif;
+}
+
+
+/* =========================================================
    HERO SECTION (MASSIVE FULL WEBSITE VIEW)
    ========================================================= */
 .hero-section {
@@ -472,7 +645,8 @@ body {
     font-size: 4vw;
   }
   .hero-sokujitsu {
-    font-size: 9vw;
+    font-size: 6vw;
+    margin-top: 10px;
   }
 
   /* Stat bubbles + badges scale with the layout too */
@@ -2732,3 +2906,136 @@ body {
   .price-ribbon-text { font-size: 1.02rem; margin-right: 6px; }
   .price-ribbon-free { font-size: 1.3rem; }
 }
+
+/* ── STICKY NAVBAR MOBILE RESPONSIVENESS ── */
+@media (max-width: 768px) {
+  .sticky-nav-container {
+    padding: 5px 10px;
+    gap: 6px;
+  }
+
+  .sticky-nav-brand {
+    gap: 6px;
+  }
+
+  .sticky-nav-right {
+    gap: 8px;
+  }
+
+  .sticky-phone-block {
+    align-items: center;
+    gap: 2px;
+  }
+
+  .kss-logo-svg {
+    height: 30px;
+  }
+
+  .sticky-brand-name {
+    font-size: 0.88rem;
+  }
+
+  .sticky-brand-sub {
+    font-size: 0.52rem;
+    letter-spacing: 0.02em;
+  }
+
+  .sticky-freedial-icon {
+    width: 22px;
+    height: 14px;
+  }
+
+  .sticky-phone-number {
+    font-size: 1.18rem;
+  }
+
+  .sticky-payment-badge {
+    padding: 1.5px 5px;
+    gap: 3px;
+  }
+
+  .sticky-payment-badge .card-logo {
+    height: 10px;
+  }
+
+  .sticky-line-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+  }
+
+  .sticky-line-svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .sticky-line-label {
+    font-size: 0.55rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .sticky-nav-container {
+    padding: 4px 6px;
+    gap: 4px;
+  }
+
+  .kss-logo-svg {
+    height: 26px;
+  }
+
+  .sticky-brand-name {
+    font-size: 0.78rem;
+  }
+
+  .sticky-brand-sub {
+    font-size: 0.46rem;
+    letter-spacing: 0.01em;
+  }
+
+  .sticky-freedial-icon {
+    width: 18px;
+    height: 12px;
+  }
+
+  .sticky-phone-number {
+    font-size: 1.02rem;
+  }
+
+  .sticky-payment-badge {
+    padding: 1px 3px;
+    gap: 2px;
+  }
+
+  .sticky-payment-badge .card-logo {
+    height: 9px;
+  }
+
+  .sticky-line-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 9px;
+  }
+
+  .sticky-line-svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .sticky-line-label {
+    font-size: 0.52rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .sticky-brand-sub {
+    display: none;
+  }
+  .sticky-brand-name {
+    font-size: 0.72rem;
+  }
+  .sticky-phone-number {
+    font-size: 0.94rem;
+  }
+}
+
