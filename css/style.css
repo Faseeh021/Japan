@@ -220,10 +220,12 @@ body {
   align-items: center;
 }
 
-.kss-logo-svg {
-  height: 48px;
+.kss-logo-img {
+  height: 52px;
   width: auto;
   display: block;
+  object-fit: contain;
+  mix-blend-mode: multiply;
 }
 
 .sticky-brand-text {
@@ -298,16 +300,14 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  background-color: #f1f5f9;
-  border: 1px solid #e2e8f0;
-  border-radius: 4px;
-  padding: 3px 10px;
 }
 
-.sticky-payment-badge .card-logo {
-  display: block;
+.sticky-payment-img {
+  height: 28px;
   width: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 6px;
 }
 
 /* --- LINE Button --- */
@@ -315,12 +315,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #06C755 0%, #00B900 100%);
-  color: #ffffff;
   text-decoration: none;
-  width: 58px;
-  height: 58px;
   border-radius: 14px;
+  overflow: hidden;
   box-shadow: 0 4px 10px rgba(6, 199, 85, 0.35);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   flex-shrink: 0;
@@ -331,25 +328,12 @@ body {
   box-shadow: 0 6px 14px rgba(6, 199, 85, 0.45);
 }
 
-.sticky-line-icon-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-}
-
-.sticky-line-svg {
-  width: 28px;
-  height: 28px;
-  margin-bottom: -1px;
-}
-
-.sticky-line-label {
-  font-size: 0.68rem;
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  font-family: Arial, sans-serif;
+.sticky-line-img {
+  width: 58px;
+  height: 58px;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
 }
 
 
@@ -2927,8 +2911,8 @@ body {
     gap: 2px;
   }
 
-  .kss-logo-svg {
-    height: 30px;
+  .kss-logo-img {
+    height: 34px;
   }
 
   .sticky-brand-name {
@@ -2949,28 +2933,14 @@ body {
     font-size: 1.18rem;
   }
 
-  .sticky-payment-badge {
-    padding: 1.5px 5px;
-    gap: 3px;
+  .sticky-payment-img {
+    height: 20px;
   }
 
-  .sticky-payment-badge .card-logo {
-    height: 10px;
-  }
-
-  .sticky-line-btn {
+  .sticky-line-img {
     width: 44px;
     height: 44px;
     border-radius: 10px;
-  }
-
-  .sticky-line-svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  .sticky-line-label {
-    font-size: 0.55rem;
   }
 }
 
@@ -2980,8 +2950,8 @@ body {
     gap: 4px;
   }
 
-  .kss-logo-svg {
-    height: 26px;
+  .kss-logo-img {
+    height: 28px;
   }
 
   .sticky-brand-name {
@@ -3002,28 +2972,14 @@ body {
     font-size: 1.02rem;
   }
 
-  .sticky-payment-badge {
-    padding: 1px 3px;
-    gap: 2px;
+  .sticky-payment-img {
+    height: 16px;
   }
 
-  .sticky-payment-badge .card-logo {
-    height: 9px;
-  }
-
-  .sticky-line-btn {
-    width: 42px;
-    height: 42px;
+  .sticky-line-img {
+    width: 40px;
+    height: 40px;
     border-radius: 9px;
-  }
-
-  .sticky-line-svg {
-    width: 20px;
-    height: 20px;
-  }
-
-  .sticky-line-label {
-    font-size: 0.52rem;
   }
 }
 
