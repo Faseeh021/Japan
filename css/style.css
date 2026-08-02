@@ -199,17 +199,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1350px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 10px 24px;
-  gap: 20px;
+  padding: 12px 28px;
+  gap: 24px;
 }
 
 /* --- Left: Logo & Brand --- */
 .sticky-nav-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   text-decoration: none;
   color: inherit;
   flex-shrink: 0;
@@ -221,7 +221,7 @@ body {
 }
 
 .kss-logo-img {
-  height: 52px;
+  height: 68px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -236,7 +236,7 @@ body {
 }
 
 .sticky-brand-name {
-  font-size: 1.45rem;
+  font-size: 1.65rem;
   font-weight: 900;
   color: #1e293b;
   letter-spacing: -0.02em;
@@ -244,7 +244,7 @@ body {
 }
 
 .sticky-brand-sub {
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: #005BAC;
   letter-spacing: 0.06em;
@@ -255,7 +255,7 @@ body {
 .sticky-nav-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
   flex-shrink: 0;
 }
 
@@ -264,14 +264,14 @@ body {
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
-  gap: 3px;
+  gap: 4px;
   flex-shrink: 0;
 }
 
 .sticky-phone-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   text-decoration: none;
   transition: transform 0.15s ease;
 }
@@ -281,13 +281,13 @@ body {
 }
 
 .sticky-freedial-icon {
-  width: 36px;
-  height: 22px;
+  width: 42px;
+  height: 26px;
   flex-shrink: 0;
 }
 
 .sticky-phone-number {
-  font-size: 2.1rem;
+  font-size: 2.5rem;
   font-weight: 900;
   color: #005BAC;
   font-family: Arial, "Helvetica Neue", sans-serif;
@@ -303,7 +303,7 @@ body {
 }
 
 .sticky-payment-img {
-  height: 28px;
+  height: 38px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -316,23 +316,23 @@ body {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(6, 199, 85, 0.35);
+  box-shadow: 0 4px 12px rgba(6, 199, 85, 0.35);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   flex-shrink: 0;
 }
 
 .sticky-line-btn:hover {
   transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 6px 14px rgba(6, 199, 85, 0.45);
+  box-shadow: 0 6px 16px rgba(6, 199, 85, 0.45);
 }
 
 .sticky-line-img {
-  width: 58px;
-  height: 58px;
+  width: 68px;
+  height: 68px;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 16px;
   display: block;
 }
 
@@ -2912,16 +2912,55 @@ body {
   }
 
   .kss-logo-img {
-    height: 34px;
+    height: 42px;
   }
 
   .sticky-brand-name {
-    font-size: 0.88rem;
+    font-size: 1.05rem;
   }
 
   .sticky-brand-sub {
-    font-size: 0.52rem;
+    font-size: 0.58rem;
     letter-spacing: 0.02em;
+  }
+
+  .sticky-freedial-icon {
+    width: 26px;
+    height: 16px;
+  }
+
+  .sticky-phone-number {
+    font-size: 1.35rem;
+  }
+
+  .sticky-payment-img {
+    height: 26px;
+  }
+
+  .sticky-line-img {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 430px) {
+  .sticky-nav-container {
+    padding: 6px 8px;
+    gap: 6px;
+  }
+
+  .kss-logo-img {
+    height: 36px;
+  }
+
+  .sticky-brand-name {
+    font-size: 0.92rem;
+  }
+
+  .sticky-brand-sub {
+    font-size: 0.5rem;
+    letter-spacing: 0.01em;
   }
 
   .sticky-freedial-icon {
@@ -2930,56 +2969,17 @@ body {
   }
 
   .sticky-phone-number {
-    font-size: 1.18rem;
+    font-size: 1.15rem;
   }
 
   .sticky-payment-img {
-    height: 20px;
+    height: 22px;
   }
 
   .sticky-line-img {
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     border-radius: 10px;
-  }
-}
-
-@media (max-width: 430px) {
-  .sticky-nav-container {
-    padding: 4px 6px;
-    gap: 4px;
-  }
-
-  .kss-logo-img {
-    height: 28px;
-  }
-
-  .sticky-brand-name {
-    font-size: 0.78rem;
-  }
-
-  .sticky-brand-sub {
-    font-size: 0.46rem;
-    letter-spacing: 0.01em;
-  }
-
-  .sticky-freedial-icon {
-    width: 18px;
-    height: 12px;
-  }
-
-  .sticky-phone-number {
-    font-size: 1.02rem;
-  }
-
-  .sticky-payment-img {
-    height: 16px;
-  }
-
-  .sticky-line-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 9px;
   }
 }
 
