@@ -2545,3 +2545,190 @@ body {
 @media (min-width: 1024px) {
   /* desktop-specific overrides go here */
 }
+
+
+/* =========================================================
+   MOBILE CORRECTIONS (≤768px)
+   Scoped entirely inside media queries — desktop is untouched.
+   Sections that were still rendering at desktop scale on phones:
+   services ribbon, warning, FAQ, service-area.
+   ========================================================= */
+@media (max-width: 768px) {
+  /* keep any stray overflow (e.g. the hero staff photo) from panning the page */
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  /* ── SERVICES: keep the price ribbon on one line ── */
+  .services-banner-ribbon {
+    padding: 14px 12px;
+    gap: 8px;
+    margin-bottom: 30px;
+  }
+  .services-ribbon-text { font-size: 1.3rem; }
+  .services-ribbon-price { font-size: 2.1rem; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.35); }
+  .services-ribbon-symbol { font-size: 1.6rem; }
+
+  .services-grid {
+    gap: 16px 14px;
+    padding-inline: 14px;
+  }
+
+  /* ── WARNING (悪徳業者撲滅) ── */
+  .warning-container { padding: 30px 16px 36px 16px; }
+
+  .warning-title-block { margin-bottom: 18px; }
+  .warning-main-title { font-size: 1.9rem; letter-spacing: 0.02em; margin-bottom: 6px; }
+  .warning-divider { font-size: 0.95rem; letter-spacing: -1px; }
+  .warning-sub-title { font-size: 1.5rem; letter-spacing: 0.02em; }
+  .warning-red-highlight { border-bottom-width: 2px; }
+
+  .warning-intro-text {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    margin: 20px auto 26px auto;
+    text-align: left;
+    word-break: normal;   /* break-all was stacking 6 chars per line */
+  }
+
+  .warning-cards-wrap { gap: 16px; }
+
+  .warning-card {
+    padding: 18px 16px;
+    border-radius: 18px;
+    box-shadow: 0 6px 16px rgba(0, 40, 140, 0.28);
+  }
+
+  .warning-card-header {
+    font-size: 1.15rem;
+    gap: 8px;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+    border-bottom-width: 2px;
+  }
+  .warning-card-icon { font-size: 1.15rem; }
+  .warning-card-text { font-size: 0.92rem; line-height: 1.8; }
+
+  /* ── FAQ ── */
+  .faq-section { padding: 36px 14px; }
+
+  .faq-header { margin-bottom: 24px; padding-left: 0; }
+  .faq-title-wrap { gap: 12px; }
+
+  .faq-bubble-icon {
+    padding: 7px 14px;
+    border-width: 3px;
+    border-radius: 14px;
+  }
+  .faq-bubble-icon::after {
+    bottom: -11px;
+    left: 14px;
+    border-width: 11px 9px 0 0;
+  }
+  .faq-bubble-icon span { font-size: 1.15rem; }
+
+  .faq-title-text { font-size: 1.35rem; }
+  .faq-title-line { height: 4px; margin-top: 8px; }
+
+  .faq-list { gap: 18px; }
+
+  .faq-card {
+    padding: 18px 15px;
+    border-radius: 22px;
+    border-width: 5px;
+    outline-width: 3px;
+    outline-offset: -9px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  }
+
+  .faq-q-row { gap: 12px; margin-bottom: 14px; }
+  .faq-a-row { gap: 12px; }
+
+  .faq-q-icon,
+  .faq-a-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 1.15rem;
+    border-width: 3px;
+    border-radius: 11px;
+  }
+
+  .faq-q-text { font-size: 1.02rem; padding-top: 3px; }
+  .faq-a-text {
+    font-size: 0.92rem;
+    padding-top: 3px;
+    padding-bottom: 6px !important;   /* base rule uses !important */
+  }
+
+  /* ── SERVICE AREA (対応エリア) ── */
+  .service-area-section { padding: 24px 0 0 0; }
+  .service-area-map-wrap { margin-bottom: 16px; }
+
+  .service-area-lists {
+    gap: 22px;
+    padding-inline: 14px;
+    margin-bottom: 30px;
+  }
+
+  .service-area-pill-btn {
+    width: 100%;
+    font-size: 1.35rem;
+    padding: 11px 0;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 12px rgba(0, 60, 160, 0.3);
+  }
+
+  .service-area-text {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    text-align: left;
+    word-break: normal;   /* break-all was stacking ~7 chars per line */
+  }
+
+  .service-area-tokyo { font-size: 1.15rem; text-align: center; }
+}
+
+@media (max-width: 380px) {
+  .warning-main-title { font-size: 1.6rem; }
+  .warning-sub-title { font-size: 1.28rem; }
+  .services-ribbon-text { font-size: 1.12rem; }
+  .services-ribbon-price { font-size: 1.8rem; }
+  .services-ribbon-symbol { font-size: 1.35rem; }
+  .service-area-pill-btn { font-size: 1.18rem; }
+  .faq-title-text { font-size: 1.18rem; }
+}
+
+/* ── PRICE GUARANTEE + HERO headline: mobile-only corrections ── */
+@media (max-width: 768px) {
+  /* 無料 was breaking onto its own line inside the ribbon */
+  .price-guarantee-card {
+    padding: 26px 16px 30px 16px;
+    border-radius: 22px;
+  }
+  .price-headline-line1 { font-size: 1.25rem; }
+  .price-headline-line2 { font-size: 1.6rem; }
+
+  .price-guarantee-ribbon {
+    padding: 12px 16px;
+    margin-bottom: 26px;
+    border-radius: 6px;
+  }
+  .price-ribbon-text { font-size: 1.25rem; margin-right: 8px; }
+  .price-ribbon-free { font-size: 1.6rem; white-space: nowrap; }
+
+  /* give the outlined トラブル / 即日解決 lockup room to breathe */
+  .hero-headline-line2 { gap: 9px; }
+}
+
+@media (max-width: 480px) {
+  .price-guarantee-card {
+    padding: 20px 10px 24px 10px;
+    border-radius: 20px;
+  }
+  .price-headline-line1 { font-size: 1.05rem; }
+  .price-headline-line2 { font-size: 1.35rem; }
+  .price-guarantee-ribbon { padding: 10px 10px; }
+  .price-ribbon-text { font-size: 1.02rem; margin-right: 6px; }
+  .price-ribbon-free { font-size: 1.3rem; }
+}
